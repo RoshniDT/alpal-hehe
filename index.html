@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Alex!</title>
+
+<!-- Ethel Cain–coded fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(circle at top, #0044dd 0, #001133 40%, #7b0000 100%);
+        font-family: 'Playfair Display', serif;
+        color: white;
+        overflow-x: hidden;
+        position: relative;
+        min-height: 100vh;
+    }
+
+    /* Snoopy watermark */
+    body::before {
+        content: "";
+        background-image: url('snoopy_hoodie.png');
+        background-size: 600px;
+        background-repeat: no-repeat;
+        background-position: center 20%;
+        opacity: 0.08;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .overlay {
+        position: relative;
+        z-index: 1;
+    }
+
+    header {
+        text-align: center;
+        padding: 60px 20px 20px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 3.8rem;
+        text-shadow: 0 0 20px rgba(255,255,255,0.7);
+    }
+
+    h2 {
+        margin-top: 10px;
+        font-size: 1.4rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .message {
+        max-width: 800px;
+        margin: 30px auto 40px;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: left;
+        padding: 20px 24px 26px;
+        background: rgba(0, 0, 0, 0.35);
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: 0 0 25px rgba(0,0,0,0.6);
+        font-family: 'Inter', sans-serif;
+    }
+
+    .message-title {
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .gallery-title {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 1.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        margin: 25px auto 70px;
+        max-width: 1000px;
+        padding: 0 18px 0;
+    }
+
+    /* Sparkly borders + hover effects */
+    .gallery img {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        border: 2px solid rgba(255,255,255,0.4);
+        box-shadow: 0 0 12px rgba(255,255,255,0.4);
+        object-fit: cover;
+        transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+        animation: sparkle 2.5s infinite ease-in-out;
+    }
+
+    @keyframes sparkle {
+        0% { box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+        50% { box-shadow: 0 0 22px rgba(255,255,255,0.9); }
+        100% { box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+    }
+
+    .gallery img:hover {
+        transform: scale(1.06);
+        filter: brightness(1.15);
+        box-shadow: 0 0 30px rgba(255,255,255,1);
+    }
+
+    /* Floating emojis + Snoopy images */
+    .float {
+        position: fixed;
+        font-size: 2.4rem;
+        animation: floatUp 8s linear infinite;
+        opacity: 0.9;
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    .float img {
+        width: 55px;
+        height: auto;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) rotate(0deg); }
+        100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    /* Snoopy mascot in corner */
+    .snoopy-corner {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 110px;
+        animation: bounce 2s infinite ease-in-out;
+        z-index: 99999;
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.7));
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* Snoopy popup */
+    .snoopy-popup {
+        position: fixed;
+        top: -300px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        z-index: 99999;
+        transition: top 1s ease-out;
+        filter: drop-shadow(0 0 15px rgba(0,0,0,0.8));
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px 10px 30px;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.1rem;
+        opacity: 0.9;
+        letter-spacing: 0.5px;
+        text-shadow: 0 0 10px rgba(255,255,255,0.6);
+        animation: footerGlow 3s infinite ease-in-out;
+    }
+
+    @keyframes footerGlow {
+        0% { text-shadow: 0 0 8px rgba(255,255,255,0.4); }
+        50% { text-shadow: 0 0 16px rgba(255,255,255,0.9); }
+        100% { text-shadow: 0 0 8px rgba(255,255,255,0.4); }
+    }
+</style>
+</head>
+
+<body>
+<div class="overlay">
+
+<header>
+    <h1>Happy Birthday Alex 💙❤️</h1>
+    <h2>22 years of snoopy, hedgehogs & inari</h2>
+</header>
+
+<div class="message">
+    <div class="message-title">From Roshni, your twin 4 life 🐶</div>
+    <p>Happy happy birthday to my dearest Alex !!!!! Wow #22 years my dear snoopy - - I will try not to make this message too long or too sappy but you know me G 😛</p>
+    <p>First of all I love you, you are one of my bestest friends ever and I’m ever so eternally grateful and blessed that you are in my life you truly are the white chocolate to my milk brown chocolate.</p>
+    <p>I truly don’t know what I would do without you, I’m being serious,,,, you’ve been there for me through everything bad and good and I want you to know I am here for you through the bad and good for you,,,, I know life has been rough on ya but I’m proud of you and you win every day cause you’re a #rockstar.</p>
+    <p>There is always a light at the end of the tunnel and you are surrounded by people who love you to bits (me included obviously) though we haven’t been able to see each other much as of lately I always think of you and you are in my heart always,,,, bro honestly you’re my twin 4 life and I hope you know that I ain’t going anywhere - - I cannot wait for many more memories the years have ahead of us and many more years till we are old and gray besties living their best lives hehe MEEEP 💙❤️</p>
+    <p>Bless your beautiful soul my dearest al pal and happy birthday love ❤️❤️❤️💙💙💙🎉🥳🎊🎈🎁🍾</p>
+</div>
+
+<div class="gallery-title">little scrapbook of us 📸</div>
+
+<div class="gallery">
+    <!-- RANDOM CUTE ORDER OF ALL 30 PHOTOS -->
+    <img src="photo17.jpeg">
+    <img src="photo3.jpeg">
+    <img src="photo22.jpeg">
+    <img src="photo8.jpeg">
+    <img src="photo1.jpeg">
+    <img src="photo14.jpeg">
+    <img src="photo30.jpeg">
+    <img src="photo6.jpeg">
+    <img src="photo19.jpeg">
+    <img src="photo11.jpeg">
+    <img src="photo27.jpeg">
+    <img src="photo4.jpeg">
+    <img src="photo25.jpeg">
+    <img src="photo9.jpeg">
+    <img src="photo13.jpeg">
+    <img src="photo2.jpeg">
+    <img src="photo20.jpeg">
+    <img src="photo7.jpeg">
+    <img src="photo29.jpeg">
+    <img src="photo5.jpeg">
+    <img src="photo16.jpeg">
+    <img src="photo23.jpeg">
+    <img src="photo10.jpeg">
+    <img src="photo28.jpeg">
+    <img src="photo12.jpeg">
+    <img src="photo26.jpeg">
+    <img src="photo18.jpeg">
+    <img src="photo21.jpeg">
+    <img src="photo24.jpeg">
+    <img src="photo15.jpeg">
+</div>
+
+<footer>
+    With love from your favourite Indian ever – Rosh ❤️💙
+</footer>
+
+</div>
+
+<!-- Snoopy mascot in corner -->
+<img src="snoopy_walk.PNG" class="snoopy-corner">
+
+<!-- Snoopy popup -->
+<img src="snoopy_samurai.PNG" class="snoopy-popup" id="snoopyPopup">
+
+<script>
+/* Floating emojis + Snoopy images */
+const floatItems = [
+    "🦔", "🍙", "🍣", "🍱",
+    "<img src='snoopy_walk.PNG'>",
+    "<img src='snoopy_hoodie.png'>",
+    "<img src='snoopy_samurai.PNG'>"
+];
+
+for (let i = 0; i < 30; i++) {
+    let e = document.createElement("div");
+    e.className = "float";
+    e.innerHTML = floatItems[Math.floor(Math.random() * floatItems.length)];
+    e.style.left = Math.random() * 100 + "vw";
+    e.style.animationDuration = (6 + Math.random() * 6) + "s";
+    e.style.animationDelay = (Math.random() * 4) + "s";
+    document.body.appendChild(e);
+}
+
+/* Confetti + Snoopy popup */
+function confettiBurst() {
+    for (let i = 0; i < 160; i++) {
+        let c = document.createElement("div");
+        c.style.position = "fixed";
+        c.style.width = "8px";
+        c.style.height = "8px";
+        c.style.background = ["#ffffff","#ffccff","#99ccff","#ff6666","#ffe066"][Math.floor(Math.random()*5)];
+        c.style.top = "-10px";
+        c.style.left = Math.random()*100 + "vw";
+        c.style.opacity = 0.95;
+        c.style.borderRadius = "50%";
+        c.style.animation = "fall 2.7s linear forwards";
+        c.style.zIndex = 9998;
+        document.body.appendChild(c);
+    }
+
+    // Snoopy popup slide-in
+    setTimeout(() => {
+        document.getElementById("snoopyPopup").style.top = "40px";
+    }, 300);
+
+    // Slide back up after a bit
+    setTimeout(() => {
+        document.getElementById("snoopyPopup").style.top = "-300px";
+    }, 3500);
+}
+
+const style = document.createElement("style");
+style.innerHTML = `
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}`;
+document.head.appendChild(style);
+
+window.onload = confettiBurst;
+</script>
+
+</body>
+</html>
